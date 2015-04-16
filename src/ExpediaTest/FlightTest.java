@@ -3,6 +3,7 @@ package ExpediaTest;
 import static org.junit.Assert.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -91,6 +92,30 @@ public class FlightTest {
 		target.Database = mockDatabase;
 		Assert.AreEqual(50, target.NumberOfPassengers);
 	}*/
+	
+	@Test
+	public void TestThatFlightGetsNumberOfPassengers(){
+		class StubDB extends IDatabase {
+
+			@Override
+			public String getCarLocation(int carNumber) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String getRoomOccupant(int roomNumber) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+		}
+		
+		IDatabase bd = new StubDB();
+		bd.Passengers = new ArrayList<String>();
+		targetFlight.Database = bd;
+		targetFlight.NumberOfPassengers();
+	}
 	
 	@After
 	public void TearDown()
